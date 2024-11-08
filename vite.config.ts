@@ -6,6 +6,9 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    strictPort: true
-  }
+    strictPort: true,
+  },
+  build: {
+    outDir: 'dist', // Specifies the directory for the production build
+  },
 });
