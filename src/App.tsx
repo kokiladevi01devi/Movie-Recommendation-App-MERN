@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Movies from './pages/Movies';
@@ -18,13 +18,13 @@ function App() {
             <Route path="/" element={<Navigate to="/movies" replace />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route 
-              path="/movies" 
+            <Route
+              path="/movies"
               element={
                 <ProtectedRoute>
                   <Movies />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Routes>
         </div>

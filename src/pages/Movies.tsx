@@ -18,7 +18,7 @@ const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [selectedVideoKey, setSelectedVideoKey] = useState<string | null>(null);
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [, setSelectedMovie] = useState<Movie | null>(null);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -56,13 +56,13 @@ const Movies = () => {
     try {
       const response = await axios.get(`http://localhost:5000/api/movies/videos/${movie.id}`);
       const videos = response.data.results;
-      
-      const trailer = videos.find((video: any) => 
+
+      const trailer = videos.find((video: any) =>
         video.type === "Trailer" && video.site === "YouTube"
-      ) || videos.find((video: any) => 
+      ) || videos.find((video: any) =>
         video.type === "Teaser" && video.site === "YouTube"
       ) || videos[0];
-      
+
       if (trailer && trailer.site === "YouTube") {
         setSelectedVideoKey(trailer.key);
       }
@@ -126,7 +126,7 @@ const Movies = () => {
                   <p className="text-gray-400 text-sm line-clamp-3">{movie.overview}</p>
                 </div>
               </div>
-              
+
               {/* Comment Section */}
               <CommentSection movieId={movie.id} movieTitle={movie.title} />
             </div>
@@ -135,12 +135,12 @@ const Movies = () => {
       )}
 
       {/* Video Modal */}
-      <VideoModal 
-        videoKey={selectedVideoKey} 
+      <VideoModal
+        videoKey={selectedVideoKey}
         onClose={() => {
           setSelectedVideoKey(null);
           setSelectedMovie(null);
-        }} 
+        }}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Star, Clock, Calendar } from 'lucide-react';
@@ -41,10 +41,10 @@ const MovieDetail = () => {
     try {
       const response = await axios.get(`http://localhost:5000/api/movies/videos/${id}`);
       const videos = response.data.results;
-      const trailer = videos.find((video: any) => 
+      const trailer = videos.find((video: any) =>
         video.type === "Trailer" && video.site === "YouTube"
       ) || videos[0];
-      
+
       if (trailer) {
         setSelectedVideoKey(trailer.key);
       }
@@ -65,7 +65,7 @@ const MovieDetail = () => {
 
   return (
     <div>
-      <div 
+      <div
         className="relative h-[70vh] bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
